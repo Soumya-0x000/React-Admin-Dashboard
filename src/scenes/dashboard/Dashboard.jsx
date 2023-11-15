@@ -22,7 +22,7 @@ const Dashboard = () => {
     ]
 
     return (
-        <div className='mx-3 mt-3 flex flex-col justify-between h-[89.1vh] overflow-y-auto scrollbar-none'>
+        <div className='mx-3 mt-3 flex flex-col justify-between h-[89vh] sm:h-[92vh] overflow-y-auto scrollbar-none'>
             <div className='w-full flex flex-col sm:flex-row gap-y-2 items-start md:items-center justify-between mb-1'>
                 <Header title={"DASHBOARD"} subtitle={"Welcome to your dashboard"}/>
 
@@ -59,11 +59,12 @@ const Dashboard = () => {
                     alignItems='center'
                     justifyContent='center'
                     sx={{
-                        [theme.breakpoints.down(400)]: {
-                            gridColumn: 'span 12',
+                        gridColumn: 'span 16', 
+                        [theme.breakpoints.up(620)]: {
+                            gridColumn: 'span 8',
                         },
-                        [theme.breakpoints.down(500)]: {
-                            gridColumn: 'span 13',
+                        [theme.breakpoints.up(1024)]: {
+                            gridColumn: 'span 4',
                         },
                         transition: 'transform 0.2s ease-in-out',
                         '&:hover': {
@@ -89,13 +90,10 @@ const Dashboard = () => {
                 borderRadius='6px'
                 backgroundColor={colors.primary[400]}
                 sx={{
-                    gridColumn: ['span 13' ,'span 10'],
-                    [theme.breakpoints.down(500)]: {
-                        gridColumn: 'span 14',
-                    },
-                    [theme.breakpoints.down(790)]: {
-                        gridColumn: 'span 16',
-                    },
+                    gridColumn: 'span 16', 
+                    [theme.breakpoints.up(1024)]: {
+                        gridColumn: 'span 10'
+                    }
                 }}>
                     <Box 
                     mt='24px'
@@ -143,10 +141,13 @@ const Dashboard = () => {
                 backgroundColor={colors.primary[400]}
                 overflow='auto'
                 sx={{
-                    gridColumn: ['span 13', 'span 6'],
-                    [theme.breakpoints.down(400)]: {
-                        gridColumn: 'span 12',
+                    gridColumn: 'span 16',
+                    [theme.breakpoints.up(690)]: {
+                        gridColumn:'span 9'
                     },
+                    [theme.breakpoints.up(1024)]: {
+                        gridColumn: 'span 6'
+                    }
                 }}>
                     <Box
                     display='flex'
@@ -202,10 +203,19 @@ const Dashboard = () => {
                 borderRadius='6px'
                 position='relative'
                 sx={{
-                    gridColumn: ['span 13', 'span 4'],
-                    [theme.breakpoints.down(400)]: {
-                        gridColumn: 'span 12',
+                    gridColumn:'span 16',
+                    [theme.breakpoints.up(690)]: {
+                        gridColumn:'span 7'
                     },
+                    [theme.breakpoints.up(1024)]: {
+                        gridColumn: 'span 5',
+                    },
+                    [theme.breakpoints.up(1150)]: {
+                        gridColumn: 'span 5'
+                    },
+                    [theme.breakpoints.up(1499)]: {
+                        gridColumn:'span 3'
+                    }
                 }}>
                     <Box 
                     mt='10px'
@@ -243,30 +253,38 @@ const Dashboard = () => {
                             <Typography 
                             sx={{
                                 color: colors.greenAccent[200],
-                                fontSize: { md:'.83rem', xl: '1rem'},
-                                [theme.breakpoints.down(400)]: {
+                                fontSize: '.6rem',
+                                [theme.breakpoints.up(400)]: {
                                     fontSize: '.75rem',
+                                },
+                                [theme.breakpoints.up(1199)]: {
+                                    fontSize: '.73rem',
                                 },
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                
                             }}>
                                 Includes extra misc expenditures and costs
                             </Typography>
                         </Box>
                     </div>
                 </Box>
-
+                
+                
                 {/* BarChart */}
                 <Box 
-                
                 gridRow='span 2'
                 borderRadius='6px'
                 backgroundColor={colors.primary[400]}
                 position='relative'
                 sx={{
-                    gridColumn: ['span 13', 'span 8']
+                    gridColumn:'span 16',
+                    [theme.breakpoints.up(1024)]: {
+                        gridColumn: 'span 11'
+                    },
+                    [theme.breakpoints.up(1499)]: {
+                        gridColumn:'span 9'
+                    }
                 }}>
                     <Box 
                     mt='10px'
@@ -298,7 +316,19 @@ const Dashboard = () => {
                 backgroundColor={colors.primary[400]}
                 position='relative'
                 sx={{
-                    gridColumn: ['span 13', 'span 4']
+                    gridColumn: 'span 16',
+                    [theme.breakpoints.up(800)]: {
+                        gridColumn:'span 6'
+                    },
+                    [theme.breakpoints.up(1024)]: {
+                        gridColumn:'span 6'
+                    },
+                    [theme.breakpoints.up(1150)]: {
+                        gridColumn:'span 5'
+                    },
+                    [theme.breakpoints.up(1499)]: {
+                        gridColumn:'span 4'
+                    },
                 }}>
                     <Box 
                     mt='10px'

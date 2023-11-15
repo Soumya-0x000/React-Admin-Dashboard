@@ -16,16 +16,18 @@ const Topbar = () => {
 
     return (
         <>
-            <div className='flex justify-between p-2'>
+            <div className='flex flex-col sm:flex-row justify-between pt-2 px-2'>
                 <Box 
                 display='flex' backgroundColor={colors.primary[400]} borderRadius='5px'>
-                    <InputBase placeholder='search' sx={{ml: 2, flex: 1, width: '14.5rem'}}/>
+                    <InputBase placeholder='search' sx={{ml: 2, flex: 1, }}/>
                     <IconButton type='button' sx={{p: 1}}>
                         <SearchIcon/>
                     </IconButton>
                 </Box>
 
-                <Box display='flex'>
+                <Box 
+                display='flex' 
+                sx={{ justifyContent: 'space-between', alignItems: 'center'}}>
                     <IconButton onClick={colorMode.toggleColorMode}>
                         {theme.palette.mode === 'dark' ? (
                             <DarkModeOutlinedIcon/>
