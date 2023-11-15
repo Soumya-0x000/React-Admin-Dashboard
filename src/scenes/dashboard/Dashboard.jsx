@@ -15,25 +15,25 @@ const Dashboard = () => {
     const colors = tokens(theme.palette.mode);
 
     const statBoxData = [
-        {title: '456,893', subtitle: 'Emails Sent', span: 'span 4', progress: '0.45', increase: '+14%', icon: <Email sx={{ color: colors.greenAccent[500], fontSize: "26px", scale: '1.1' }}/>},
-        {title: '4565,987', subtitle: 'Sales Obtained', span: 'span 4', progress: '0.65', increase: '+28%', icon: <PointOfSaleTwoTone sx={{ color: colors.greenAccent[500], fontSize: "26px", scale: '1.1' }}/>},
-        {title: '24,693', subtitle: 'New Clients', span: 'span 4', progress: '0.25', increase: '+10%', icon: <PersonAddAlt1TwoTone sx={{ color: colors.greenAccent[500], fontSize: "26px", scale: '1.1' }}/>},
-        {title: '2,458,694', subtitle: 'Traffic Received', span: 'span 4', progress: '0.82', increase: '+43%', icon: <TrafficTwoTone sx={{ color: colors.greenAccent[500], fontSize: "26px", scale: '1.1' }}/>},
+        {title: '456,893', subtitle: 'Emails Sent', progress: '0.45', increase: '+14%', icon: <Email sx={{ color: colors.greenAccent[500], fontSize: "26px", scale: '1.1' }}/>},
+        {title: '4565,987', subtitle: 'Sales Obtained', progress: '0.65', increase: '+28%', icon: <PointOfSaleTwoTone sx={{ color: colors.greenAccent[500], fontSize: "26px", scale: '1.1' }}/>},
+        {title: '24,693', subtitle: 'New Clients', progress: '0.25', increase: '+10%', icon: <PersonAddAlt1TwoTone sx={{ color: colors.greenAccent[500], fontSize: "26px", scale: '1.1' }}/>},
+        {title: '2,458,694', subtitle: 'Traffic Received', progress: '0.82', increase: '+43%', icon: <TrafficTwoTone sx={{ color: colors.greenAccent[500], fontSize: "26px", scale: '1.1' }}/>},
     ]
 
     return (
-        <div className='mx-3 mt-3 flex flex-col justify-between'>
-            <div className='flex items-center justify-between mb-1'>
+        <div className='mx-3 mt-3 flex flex-col justify-between h-[89.1vh] overflow-y-auto scrollbar-none'>
+            <div className='w-full flex flex-col sm:flex-row gap-y-2 items-start md:items-center justify-between mb-1'>
                 <Header title={"DASHBOARD"} subtitle={"Welcome to your dashboard"}/>
 
                 <Box>
                     <Button
                     sx={{
-                        backgroundColor: colors.blueAccent[700],
+                        backgroundColor: colors.blueAccent[600],
                         color: colors.grey[100],
                         fontSize: '14px',
                         fontWeight: 'bold',
-                        padding: '10px 20px',
+                        padding: ['5px 7px', {sm: '10px 20px'}],
                         ":hover": {backgroundColor: colors.blueAccent[600]}
                     }}>
                         <DownloadOutlined sx={{mr: '10px'}}/>
@@ -49,18 +49,22 @@ const Dashboard = () => {
             gridAutoRows='140px'
             gap='12px'
             mt='10px'>
-                
                 {/* Row 1 */}
                 {statBoxData.map((data, i) => (
                     <Box 
                     key={i}
-                    gridColumn={data.span}
                     backgroundColor={colors.primary[400]}
                     borderRadius={'6px'}
                     display='flex'
                     alignItems='center'
                     justifyContent='center'
                     sx={{
+                        [theme.breakpoints.down(400)]: {
+                            gridColumn: 'span 12',
+                        },
+                        [theme.breakpoints.down(500)]: {
+                            gridColumn: 'span 13',
+                        },
                         transition: 'transform 0.2s ease-in-out',
                         '&:hover': {
                             transform: 'scale(1.04)',
@@ -81,10 +85,18 @@ const Dashboard = () => {
                 {/* Row 2 */}
                 {/* LineChart */}
                 <Box 
-                gridColumn='span 10'
                 gridRow='span 2'
                 borderRadius='6px'
-                backgroundColor={colors.primary[400]}>
+                backgroundColor={colors.primary[400]}
+                sx={{
+                    gridColumn: ['span 13' ,'span 10'],
+                    [theme.breakpoints.down(500)]: {
+                        gridColumn: 'span 14',
+                    },
+                    [theme.breakpoints.down(790)]: {
+                        gridColumn: 'span 16',
+                    },
+                }}>
                     <Box 
                     mt='24px'
                     p='0 30px'
@@ -126,11 +138,16 @@ const Dashboard = () => {
                 
                 {/* Transactions */}
                 <Box 
-                gridColumn='span 6'
                 gridRow='span 2'
                 borderRadius='6px'
                 backgroundColor={colors.primary[400]}
-                overflow='auto'>
+                overflow='auto'
+                sx={{
+                    gridColumn: ['span 13', 'span 6'],
+                    [theme.breakpoints.down(400)]: {
+                        gridColumn: 'span 12',
+                    },
+                }}>
                     <Box
                     display='flex'
                     justifyContent='start'
@@ -180,11 +197,16 @@ const Dashboard = () => {
 
                 {/* Row 3 */}
                 <Box 
-                gridColumn='span 4'
                 gridRow='span 2'
                 backgroundColor={colors.primary[400]}
                 borderRadius='6px'
-                position='relative'>
+                position='relative'
+                sx={{
+                    gridColumn: ['span 13', 'span 4'],
+                    [theme.breakpoints.down(400)]: {
+                        gridColumn: 'span 12',
+                    },
+                }}>
                     <Box 
                     mt='10px'
                     p='0 30px'
@@ -218,18 +240,34 @@ const Dashboard = () => {
                                 $48,352 revenue generated
                             </Typography>
                             
-                            <Typography>Includes extra misc expenditures and costs</Typography>
+                            <Typography 
+                            sx={{
+                                color: colors.greenAccent[200],
+                                fontSize: { md:'.83rem', xl: '1rem'},
+                                [theme.breakpoints.down(400)]: {
+                                    fontSize: '.75rem',
+                                },
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                
+                            }}>
+                                Includes extra misc expenditures and costs
+                            </Typography>
                         </Box>
                     </div>
                 </Box>
 
                 {/* BarChart */}
                 <Box 
-                gridColumn='span 8'
+                
                 gridRow='span 2'
                 borderRadius='6px'
                 backgroundColor={colors.primary[400]}
-                position='relative'>
+                position='relative'
+                sx={{
+                    gridColumn: ['span 13', 'span 8']
+                }}>
                     <Box 
                     mt='10px'
                     p='0 30px'
@@ -255,11 +293,13 @@ const Dashboard = () => {
 
                 {/* Map */}
                 <Box 
-                gridColumn='span 4'
                 gridRow='span 2'
                 borderRadius='6px'
                 backgroundColor={colors.primary[400]}
-                position='relative'>
+                position='relative'
+                sx={{
+                    gridColumn: ['span 13', 'span 4']
+                }}>
                     <Box 
                     mt='10px'
                     p='0 30px'

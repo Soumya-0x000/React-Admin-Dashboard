@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTheme } from '@emotion/react'
 import { Link } from 'react-router-dom'
@@ -18,10 +18,6 @@ import PieChartOutlineOutlinedIcon from '@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
-import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
-import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import img from '../../../public/R.gif'
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -48,8 +44,21 @@ const animateMenu = {
 const Sidebar = () => {
     const theme = useTheme()
     const colors = tokens(theme.palette.mode)
-    const [isCollapsed, setIsCollapsed] = useState(false)
+
+    const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 1200)
     const [selected, setSelected] = useState('Dashboard')
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsCollapsed(window.innerWidth <= 1200)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
     
     const dataItems = [
         {title: 'Manage team', to: '/team', icon: PeopleAltOutlinedIcon},
@@ -67,12 +76,13 @@ const Sidebar = () => {
         {title: 'Line chart', to: '/line', icon: TimelineOutlinedIcon},
         {title: 'Geography chart', to: '/geography', icon: MapOutlinedIcon}
     ]
+
     const renderCategory = (items, title, delay, iconSize) => {
         return (
             <motion.div variants={animateMenu} initial='initial' animate='final' transition={{delay, damping: 10}}>
                 <Typography 
                 variant='h6' 
-                className={`pl- ${isCollapsed ? 'hidden' : ''}`} 
+                className={`${isCollapsed ? 'hidden' : ''}`} 
                 color={colors.blueAccent[400]}
                 fontWeight='bold'
                 fontSize={'1rem'}>

@@ -372,23 +372,23 @@ const GeographyChart = ({ isDashboard = false }) => {
             />
 
             <div className={`${isDashboard ? "flex items-center justify-center" : ""}`}>
-                <div className={`absolute flex items-center ${ isDashboard ? "top-2 right-1 text-[.8rem]" : "" }`}>
-                    <div className="w-[3rem] h-[2rem] flex justify-center items-center cursor-pointer">
-                        <FontAwesomeIcon
-                            icon={faPenToSquare}
-                            className={`${isDashboard ? "text-[1rem]" : "text-[1.2rem]"} ${!isDashboard ? "text-blue-300 bg-blue-800" : "text-green-300 bg-green-900" } p-2 rounded-full active:scale-95 transition-all`}
-                            onClick={() => setIsModalOpen(!isModalOpen)}
-                        />
-                    </div>
+                {!isDashboard && (
+                    <div className={`absolute flex items-center ${ isDashboard ? "top-2 right-1 text-[.8rem]" : "" }`}>
+                        <div className="w-[3rem] h-[2rem] flex justify-center items-center cursor-pointer">
+                            <FontAwesomeIcon
+                                icon={faPenToSquare}
+                                className={`${isDashboard ? "text-[1rem]" : "text-[1.2rem]"} ${!isDashboard ? "text-blue-300 bg-blue-800" : "text-green-300 bg-green-900" } p-2 rounded-full active:scale-95 transition-all`}
+                                onClick={() => setIsModalOpen(!isModalOpen)}
+                            />
+                        </div>
 
-                    {!isDashboard && (
                         <div
                         className={`bg-blue-800 text-blue-300 cursor-pointer rounded-full active:scale-95 transition-all font-semibold px-3 py-2 text-[.95rem]`}
                         onClick={handleResetAll}>
                             <button>Reset All</button>
                         </div>
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
 
             {isModalOpen && (
