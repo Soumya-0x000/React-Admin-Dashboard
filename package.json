@@ -35,7 +35,7 @@
     "autoprefixer": "^10.4.16",
     "dayjs": "^1.11.10",
     "formik": "^2.4.5",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "^10.16.16",
     "postcss-cli": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
